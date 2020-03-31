@@ -1,0 +1,30 @@
+
+/*Create Tabel*/
+
+create table clients (
+    clientID int NOT NULL PRIMARY KEY,
+    clientFirstName varchar (15),
+    clientLastName varchar (25),
+    clientEmail varchar(40),
+    clientPassword varchar(225),
+    clientLevel ENUM('1','2','3'),
+    comments TEXT
+)
+
+/*Add Client */
+
+ INSERT INTO clients (clientID, clientFirstname, clientLastname, clientEmail, clientLevel, clientPassword, comments) VALUE (1, "Tony", "Stark", "Tony@starkent.com",3,"Iam1ronM@n", "I am the real Ironman")
+ 
+ /*Replace Nylon for Climbing */ 
+UPDATE inventory SET invName = replace (invName , 'Nylon Rope', 'Climbing Rope')
+
+/* For case senstive txt field (I tried '%nylon rope%', it didnt work ) * /
+UPDATE inventory SET invDescription = replace (invDescription , 'nylon rope', 'climbing rope')
+
+/* Innerjoin on Misc Category */ 
+Select invName from inventory
+INNER JOIN categories on inventory.categoryId = categories.categoryId
+WHERE categories.categoryName = "Misc"
+
+/*Drop Car*/
+DELETE FROM inventory WHERE invName ="Koenigsegg CCX car"
